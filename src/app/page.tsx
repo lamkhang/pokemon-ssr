@@ -4,6 +4,7 @@ import BtnFilterType from "src/components/BtnFilterType";
 import Pokemon from "src/components/Pokemon";
 import { DataResult, Result, ResultFilterType } from "src/types";
 import MultiSelect from "src/components/MultiSelect";
+import { getPokemons, getTypes } from "src/apis";
 
 export default async function Home({
   searchParams,
@@ -16,9 +17,7 @@ export default async function Home({
   const limitParam = +(params?.limit || 20);
   // const text = await params;
 
-  const resTypes = await fetch(
-    `https://pokeapi.co/api/v2/type?limit=100&offset=0`
-  );
+  const resTypes = await getTypes();
   const types: DataResult = await resTypes.json();
 
   const isFilterTypes = typesParam.length > 0;
@@ -54,11 +53,7 @@ export default async function Home({
       []
     );
   } else {
-    const resPokemons = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${limitParam}&offset=${
-        limitParam * +pageParam
-      }`
-    );
+    const resPokemons = await getPokemons({ limitParam, pageParam });
     pokemons = await resPokemons.json();
   }
 
@@ -103,7 +98,7 @@ export default async function Home({
       </div>
       <div className="flex gap-2 justify-center mt-4">
         {pageParam > 0 && <Button name="Prev" type="prev" />}
-        {pageParam * limitParam <
+        {(pageParam + 1) * limitParam <
           (isFilterTypes ? pokemonsFilter.length : pokemons.count) && (
           <Button name="Next" type="next" />
         )}

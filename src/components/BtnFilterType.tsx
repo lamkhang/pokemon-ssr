@@ -26,6 +26,7 @@ const BtnFilterType: React.FC<{ name: string }> = ({ name }) => {
     params.delete("page");
     router.push(`?${params.toString()}`);
   };
+
   return (
     <button
       className={`cursor-pointer rounded-md border  py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg ${
