@@ -4,16 +4,19 @@
 
 A modern web application built with Next.js and React that [brief description of what your application does].
 
-![Project Screenshot](/placeholder.svg?height=300&width=600)
-
 ## Features
 
 - 📊 Server side rendering with app routing
 - 🚀 Fast, responsive UI built with  Next.js
+- 📄 Pokem list, pagination, filter type pokemon
 - 🎨 Beautiful styling with Tailwind CSS
 - 🔒 Authentication and authorization
 - 📱 Mobile-friendly design
-- 🌐 API integration
+- 🌐 API integration pokemon
+  + Get list from "https://pokeapi.co/api/v2/pokemon"
+  + Get list type "https://pokeapi.co/api/v2/type"
+  + Get detail from  "https://pokeapi.co/api/v2/pokemon/id/"
+  + Get list base on filter type: map type -> get detail type -> get detail pokemon
 
 ## Installation
 
